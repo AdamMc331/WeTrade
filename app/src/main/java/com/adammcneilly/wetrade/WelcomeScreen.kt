@@ -26,10 +26,15 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.navigate
+import androidx.navigation.compose.rememberNavController
 import com.adammcneilly.wetrade.ui.theme.WeTradeTheme
 
 @Composable
-fun WelcomeScreen() {
+fun WelcomeScreen(
+    navController: NavController,
+) {
     Box {
         WelcomeBackground()
 
@@ -44,7 +49,8 @@ fun WelcomeScreen() {
                 .align(Alignment.BottomCenter)
                 .padding(horizontal = 16.dp)
                 .padding(bottom = 32.dp)
-                .height(48.dp)
+                .height(48.dp),
+            navController = navController,
         )
     }
 }
@@ -83,7 +89,10 @@ fun GetStartedButton(modifier: Modifier) {
 }
 
 @Composable
-fun LogInButton(modifier: Modifier) {
+fun LogInButton(
+    modifier: Modifier,
+    navController: NavController,
+) {
     val buttonColors = outlinedButtonColors(
         backgroundColor = Color.Transparent,
     )
@@ -94,7 +103,9 @@ fun LogInButton(modifier: Modifier) {
     )
 
     OutlinedButton(
-        onClick = { /*TODO*/ },
+        onClick = {
+            navController.navigate("login")
+        },
         shape = MaterialTheme.shapes.large,
         colors = buttonColors,
         border = buttonBorder,
@@ -105,7 +116,10 @@ fun LogInButton(modifier: Modifier) {
 }
 
 @Composable
-fun WelcomeButtonRow(modifier: Modifier) {
+fun WelcomeButtonRow(
+    modifier: Modifier,
+    navController: NavController,
+) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier,
@@ -119,7 +133,8 @@ fun WelcomeButtonRow(modifier: Modifier) {
         )
 
         LogInButton(
-            modifier = buttonModifier
+            modifier = buttonModifier,
+            navController = navController,
         )
     }
 }
@@ -135,6 +150,6 @@ fun WelcomeButtonRow(modifier: Modifier) {
 @Composable
 private fun WelcomeScreenPreview() {
     WeTradeTheme {
-        WelcomeScreen()
+        WelcomeScreen(rememberNavController())
     }
 }

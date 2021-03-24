@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
                 NavHost(navController, "welcome") {
                     composable("welcome") {
-                        WelcomeScreen()
+                        WelcomeScreen(navController)
                     }
                     composable("login") {
                         LoginScreen()
