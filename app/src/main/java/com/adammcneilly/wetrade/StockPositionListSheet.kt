@@ -6,7 +6,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.adammcneilly.wetrade.ui.theme.WeTradeTheme
 
 @Composable
-fun HomeScreen() {
+fun StockPositionListSheet() {
 
 }
 
@@ -19,8 +19,8 @@ fun HomeScreen() {
     uiMode = Configuration.UI_MODE_NIGHT_NO,
 )
 @Composable
-private fun HomeScreenPreview() {
+private fun StockPositionListSheetPreview() {
     WeTradeTheme {
-        HomeScreen()
+        StockPositionListSheet()
     }
 }

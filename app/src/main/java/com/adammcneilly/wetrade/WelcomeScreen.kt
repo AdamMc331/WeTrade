@@ -1,5 +1,6 @@
 package com.adammcneilly.wetrade
 
+import android.content.res.Configuration
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.adammcneilly.wetrade.ui.theme.WeTradeTheme
@@ -9,18 +10,17 @@ fun WelcomeScreen() {
 
 }
 
-@Preview
+@Preview(
+    name = "Night Mode",
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+)
+@Preview(
+    name = "Day Mode",
+    uiMode = Configuration.UI_MODE_NIGHT_NO,
+)
 @Composable
-fun PreviewDarkWelcomeScreen() {
-    WeTradeTheme(darkTheme = true) {
-        WelcomeScreen()
-    }
-}
-
-@Preview
-@Composable
-fun PreviewLightWelcomeScreen() {
-    WeTradeTheme(darkTheme = false) {
+private fun WelcomeScreenPreview() {
+    WeTradeTheme {
         WelcomeScreen()
     }
 }
