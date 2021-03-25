@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Divider
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -23,6 +24,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.adammcneilly.wetrade.ui.theme.Green
+import com.adammcneilly.wetrade.ui.theme.Red
 import com.adammcneilly.wetrade.ui.theme.WeTradeTheme
 
 @Composable
@@ -66,12 +69,12 @@ private fun StockPositionListItem(stockPosition: StockPosition) {
         PriceAndChangeColumn(
             stockPosition,
             Modifier
-                .weight(1F),
+                .fillMaxWidth(0.20F),
         )
         NameColumn(
             stockPosition,
             Modifier
-                .weight(3F),
+                .weight(1F),
         )
         StockChart(
             stockPosition,
@@ -94,8 +97,16 @@ private fun PriceAndChangeColumn(
                 .paddingFromBaseline(top = 24.dp)
         )
 
+        val changeCharacter = stockPosition.change.first()
+        val changeColor = if (changeCharacter == '+') {
+            Green
+        } else {
+            Red
+        }
+
         Text(
             stockPosition.change,
+            color = changeColor,
             modifier = Modifier
                 .paddingFromBaseline(top = 16.dp, bottom = 16.dp)
         )
@@ -112,6 +123,7 @@ private fun NameColumn(
     ) {
         Text(
             stockPosition.shortName,
+            style = MaterialTheme.typography.h3,
             modifier = Modifier
                 .paddingFromBaseline(top = 24.dp)
         )
