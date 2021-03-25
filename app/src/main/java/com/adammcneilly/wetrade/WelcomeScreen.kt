@@ -56,7 +56,7 @@ fun WelcomeScreen(
 }
 
 @Composable
-fun WelcomeBackground() {
+private fun WelcomeBackground() {
     Image(
         painterResource(id = R.drawable.ic_welcome_bg),
         contentDescription = null,
@@ -67,7 +67,7 @@ fun WelcomeBackground() {
 }
 
 @Composable
-fun AppLogo(
+private fun AppLogo(
     modifier: Modifier,
 ) {
     Image(
@@ -78,7 +78,7 @@ fun AppLogo(
 }
 
 @Composable
-fun GetStartedButton(modifier: Modifier) {
+private fun GetStartedButton(modifier: Modifier) {
     Button(
         onClick = { /*TODO*/ },
         shape = MaterialTheme.shapes.large,
@@ -89,7 +89,7 @@ fun GetStartedButton(modifier: Modifier) {
 }
 
 @Composable
-fun LogInButton(
+private fun LogInButton(
     modifier: Modifier,
     navController: NavController,
 ) {
@@ -116,7 +116,7 @@ fun LogInButton(
 }
 
 @Composable
-fun WelcomeButtonRow(
+private fun WelcomeButtonRow(
     modifier: Modifier,
     navController: NavController,
 ) {
