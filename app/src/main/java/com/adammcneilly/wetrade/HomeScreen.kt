@@ -17,10 +17,12 @@ import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.BottomSheetScaffold
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.ButtonDefaults.textButtonColors
 import androidx.compose.material.ContentAlpha
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
@@ -30,10 +32,12 @@ import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.More
+import androidx.compose.material.rememberBottomSheetScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -43,14 +47,25 @@ import com.adammcneilly.wetrade.ui.theme.Green
 import com.adammcneilly.wetrade.ui.theme.WeTradeTheme
 import com.adammcneilly.wetrade.ui.theme.White
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun HomeScreen() {
-    Surface(
-        color = MaterialTheme.colors.background,
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        HomeScreenContent()
+    BottomSheetScaffold(
+        sheetContent = {
+            StockPositionListSheet()
+        },
+        scaffoldState = rememberBottomSheetScaffoldState(),
+        sheetPeekHeight = 64.dp,
+        sheetShape = RectangleShape,
+    ) { paddingValues ->
+        Surface(
+            color = MaterialTheme.colors.background,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) {
+            HomeScreenContent()
+        }
     }
 }
 
